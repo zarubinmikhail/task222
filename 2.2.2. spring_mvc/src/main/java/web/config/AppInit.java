@@ -1,5 +1,5 @@
 package web.config;
-
+//http://localhost:8079/spring_mvc_war/
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
