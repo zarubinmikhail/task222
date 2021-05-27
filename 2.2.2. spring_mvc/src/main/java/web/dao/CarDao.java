@@ -1,8 +1,9 @@
 package web.dao;
 
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
+import web.models.Car;
+
+import java.util.List;
 
 public interface CarDao {
-    String getCars(@RequestParam(value = "count", required = false) String count, Model model);
+    List<Car> getCars(String count, List<Car> list);
 }

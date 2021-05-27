@@ -16,41 +16,24 @@ public class CarDaoImpl implements CarDao {
     private List<Car> carList = new ArrayList<>();
 
     @Override
-    @SuppressWarnings("unchecked")
-    @GetMapping(value = "/cars")
-    public String getCars(@RequestParam(value = "count", required = false) String count, Model model) {
-        List<Car> cars = new ArrayList<>();
+    public List<Car> getCars(String count, List<Car> list) {
+        carList.clear();
         int tmp = 0;
-        setList();
         if (count == null) {
-            for (Car l : carList)
-                cars.add(l);
-            model.addAttribute("cars", cars);
-            return "/cars";
+
+            return list;
         } else {
             tmp = Integer.parseInt(count);
             if (tmp < 5) {
                 for (int i = 0; i < tmp; i++) {
-                    cars.add(carList.get(i));
+                    carList.add(list.get(i));
                 }
-                model.addAttribute("cars", cars);
-            } else if (tmp >= 5) {
-                for (Car l : carList)
-                    cars.add(l);
-                model.addAttribute("cars", cars);
+                return carList;
+            } else {
+
+                return list;
+
             }
-
-            return "/cars";
         }
-    }
-
-    public void setList() {
-        carList.clear();
-        carList.add(new Car("Lada", "Priora", "Black"));
-        carList.add(new Car("Chevrole", "Niva", "White"));
-        carList.add(new Car("Lambo", "Diablo", "Yellow"));
-        carList.add(new Car("Jeep", "Wrangler", "Green"));
-        carList.add(new Car("Volvo", "XC80", "White"));
-        carList.add(new Car("Mers", "SLK", "Blue"));
     }
 }
